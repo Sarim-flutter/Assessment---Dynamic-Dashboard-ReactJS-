@@ -1,11 +1,18 @@
-import styles from './widget.module.css';
 
 const Widget = (props) => {
+    const widgetDelete = () => {
+        props.onWidgetDeleting(props.id)
+    }
     return (
-                <div className="card">
+                <div className='custom-card'>
+                    <button type="button" className="btn btn-primary customBtn custom-btn delete-button" onClick={widgetDelete}><i class="fa-solid fa-trash"></i></button>
+
                     <div className="card-body">
-                        <h5 className="card-title"> {props.title}</h5>
-                        <p className="card-text">{props.content}</p>
+                        <b className="card-title"> {props.title}</b>
+                        <div className="card-content">
+                            {props.children}
+
+                        </div>
                     </div>
                 </div>)
 }

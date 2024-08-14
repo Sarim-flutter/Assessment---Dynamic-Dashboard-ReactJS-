@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+body{
+  background-color: #F0F5FA;
+}
 
 .App-logo {
   height: 40vmin;
@@ -36,4 +39,74 @@
     transform: rotate(360deg);
   }
 }
+.custom-card{
+  box-shadow: 0px 0px 16px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 15px;
+    position: relative;
+    min-height: 160px;
+    height: 160px;
+    background-color: white;
+}
+.custom-card .card-body{
+  height: 100%;
+}
+.custom-btn{
+  background-color: white;
+  border: 2px solid #80808038;
+  color: grey;
 
+}
+.custom-btn:hover{
+  background-color: rgba(128, 128, 128, 0.218);
+  color: grey;
+  border: 2px solid #80808038;
+}
+.delete-button{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border: none;
+}
+.custom-btn:hover{
+  border: 2px solid #80808038 !important;
+}
+.custom-btn:active{
+  border: 2px solid #80808038 !important;
+  background-color: grey !important;
+}
+.custom-btn:focus-visible{
+  border: 2px solid #80808038 !important;
+  background-color: grey !important;
+}
+.delete-button:hover{
+  border: none !important;
+}
+.delete-button:active{
+  border: none !important;
+}
+.add-widget-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.add-widget-card .card-body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.top-bar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.card-content{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+}

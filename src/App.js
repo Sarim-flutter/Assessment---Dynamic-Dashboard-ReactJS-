@@ -87,6 +87,21 @@ function App() {
     setSelectedCategory(id);
     document.getElementById("globalWidget").click()
   };
+  const deleteCategory = (id,widgetId) => {
+    // setSelectedCategory(id);
+    setCatagoryList((prevState) => {
+     
+      let copyCatagory = [
+        ...prevState
+      ]
+      let selectedCategory=copyCatagory.find((x) => x.id == id).Widget.filter((x) => x.id !== widgetId);
+      setTitle("")
+      setDescription("")
+      copyCatagory.find((x) => x.id == id).Widget=selectedCategory;
+      setCatagoryList(copyCatagory)
+      return copyCatagory
+    })
+  };
   const handleSubmit = () => {
     if (title && description) {
       setCatagoryList((prevState) => {
@@ -114,10 +129,16 @@ function App() {
   return (
     <>
       <div className="container">
-
-        <button type="button" id= "globalWidget" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Add Widget
-        </button>
+        <div className='top-bar mt-4'>
+          <div>
+            <h5>CNAPP Dashboard</h5>
+          </div>
+          <div>
+            <button type="button" id= "globalWidget" className="btn btn-primary custom-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <i class="fa-solid fa-plus">&nbsp;</i>Add Widget
+            </button>
+          </div>
+        </div>
 
 
         <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -145,8 +166,8 @@ function App() {
                 </div>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" id="discard" data-bs-dismiss="modal">Discard</button>
-                <button type="button" className="btn btn-primary" onClick={handleSubmit} > Submit</button>
+                <button type="button" className="btn btn-secondary custom-btn" id="discard" data-bs-dismiss="modal">Discard</button>
+                <button type="button" className="btn btn-primary custom-btn" onClick={handleSubmit} > Submit</button>
               </div>
             </div>
           </div>
@@ -154,9 +175,9 @@ function App() {
         <div>
           {catagoryList.map((category, i) => (
 
-            <div key={category.id}>
-              <h2>{category.CatName}</h2>
-              <Catagories widgets={category.Widget} onWidgetAdd = {(id) =>{handleCategoryChange(id)}} categoryId= {category.id}  ></Catagories>
+            <div key={category.id} className='mt-4'>
+              <h6 className='mb-2'><b>{category.CatName}</b></h6>
+              <Catagories onWidgetDelete= {(id,widgetId) =>{deleteCategory(id,widgetId)}} widgets={category.Widget} onWidgetAdd = {(id) =>{handleCategoryChange(id)}} categoryId= {category.id}  ></Catagories>
             </div>
           ))}
 
